@@ -3,8 +3,12 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Galax Shop 💖 | Peluches Kawaii de Japón</title>
+  <title>Sweet Plush 💖 | Peluches Kawaii de Japón</title>
   <style>
+    * {
+      box-sizing: border-box;
+    }
+
     body {
       margin: 0;
       font-family: 'Poppins', sans-serif;
@@ -14,7 +18,7 @@
 
     header {
       background-color: #ffb6c1;
-      padding: 20px;
+      padding: 25px 15px;
       text-align: center;
       box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     }
@@ -29,13 +33,16 @@
       margin: 5px 0 0;
       color: #fff;
       font-style: italic;
+      font-size: 1em;
     }
 
     .catalogo {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
       gap: 20px;
-      padding: 40px;
+      padding: 20px;
+      max-width: 1200px;
+      margin: 0 auto;
     }
 
     .producto {
@@ -53,16 +60,19 @@
 
     .producto img {
       width: 100%;
+      height: auto;
       border-radius: 12px;
     }
 
     .producto h3 {
       color: #ff69b4;
       margin-top: 10px;
+      font-size: 1.1em;
     }
 
     .producto p {
       margin: 5px 0;
+      font-size: 0.95em;
     }
 
     footer {
@@ -70,7 +80,7 @@
       padding: 20px;
       background-color: #ffb6c1;
       color: white;
-      margin-top: 20px;
+      font-size: 0.9em;
     }
 
     /* Botón flotante de WhatsApp */
@@ -81,27 +91,61 @@
       background-color: #25D366;
       color: white;
       border-radius: 50%;
-      width: 60px;
-      height: 60px;
+      width: 55px;
+      height: 55px;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 30px;
+      font-size: 28px;
       text-decoration: none;
       box-shadow: 0 4px 10px rgba(0,0,0,0.3);
       transition: 0.3s;
+      z-index: 1000;
     }
 
     .whatsapp:hover {
       transform: scale(1.1);
     }
 
+    /* Responsividad */
+    @media (max-width: 768px) {
+      header h1 {
+        font-size: 1.6em;
+      }
+      header p {
+        font-size: 0.9em;
+      }
+      .producto h3 {
+        font-size: 1em;
+      }
+      .producto p {
+        font-size: 0.85em;
+      }
+      .catalogo {
+        padding: 15px;
+        gap: 15px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      header {
+        padding: 20px 10px;
+      }
+      .catalogo {
+        grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      }
+      .whatsapp {
+        width: 50px;
+        height: 50px;
+        font-size: 24px;
+      }
+    }
   </style>
 </head>
 <body>
 
   <header>
-    <h1>Galax Shop 💖</h1>
+    <h1>Sweet Plush 💖</h1>
     <p>Peluches kawaii importados de Japón 🇯🇵</p>
   </header>
 
@@ -133,11 +177,11 @@
   </section>
 
   <footer>
-    <p>© 2025 Galax Shop 💖 | Importados directamente de Japón | Lima - Perú</p>
+    <p>© 2025 Sweet Plush 💖 | Importados directamente de Japón | Lima - Perú</p>
   </footer>
 
   <!-- Botón de WhatsApp -->
-  <a href="https://wa.me/933698436?text=¡Hola!%20Quiero%20consultar%20por%20los%20peluches%20de%20Sweet%20Plush%20💖" 
+  <a href="https://wa.me/51999999999?text=¡Hola!%20Quiero%20consultar%20por%20los%20peluches%20de%20Sweet%20Plush%20💖" 
      target="_blank" class="whatsapp">
     💬
   </a>
