@@ -4,6 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Galax Shop - Accesorios & Peluches Kawaii</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
     :root{
       --pink:#ffb6d9;
@@ -66,6 +67,74 @@
     .close{position:absolute;top:18px;right:18px;background:rgba(255,255,255,0.9);border-radius:50%;width:42px;height:42px;display:flex;align-items:center;justify-content:center;cursor:pointer}
 
     @media (max-width:900px){.modal .panel{grid-template-columns:1fr;padding:12px}.main-img{height:300px}}
+
+     body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #fff;
+  }
+
+  header {
+    text-align: center;
+    padding: 10px;
+  }
+
+  .product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 15px;
+    padding: 10px;
+  }
+
+  .product-card {
+    background-color: #fff;
+    border-radius: 15px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    padding: 10px;
+    text-align: center;
+    transition: transform 0.2s ease;
+  }
+
+  .product-card:hover {
+    transform: scale(1.03);
+  }
+
+  .product-card img {
+    width: 100%;
+    height: auto;
+    border-radius: 15px;
+  }
+
+  .product-card h3 {
+    font-size: 1rem;
+    margin: 10px 0 5px;
+  }
+
+  .product-card p {
+    font-size: 0.9rem;
+    color: #555;
+  }
+
+  /* 🔹 Ajustes específicos para celulares */
+  @media (max-width: 600px) {
+    .product-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+    }
+
+    header h1 {
+      font-size: 1.2rem;
+    }
+
+    .product-card h3 {
+      font-size: 0.9rem;
+    }
+
+    .product-card p {
+      font-size: 0.8rem;
+    }
+  }
   </style>
 </head>
 <body>
@@ -131,8 +200,8 @@
     // Simulated products (images públicas de ejemplo). Cambia estas URLs por tus fotos luego.
     const products = [
       {id:1,title:'Charmmy Kitty Peluche',price:'S/ 93.00',desc:'Charmmy Kitty original - 20cm. Muy suave y coleccionable.',images:[
-        'Image/producto1.JPG',
-        'Image/producto1_1.JPG',
+        'Image/producto1.jpg',
+        'Image/producto1_1.jpg',
         'Image/producto1_2.JPG'
       ]},
       {id:2,title:'Gudetama Peluche',price:'S/ 67.00',desc:'Gudetama suave y dormilón, 25cm. Edición importada.',images:[
@@ -215,4 +284,5 @@
   </script>
 </body>
 </html>
+
 
