@@ -1,190 +1,217 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Sweet Plush 💖 | Peluches Kawaii de Japón</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Galax Shop - Accesorios & Peluches Kawaii</title>
   <style>
-    * {
-      box-sizing: border-box;
+    :root{
+      --pink:#ffb6d9;
+      --pink-2:#ff69b4;
+      --violet:#8a6be2;
+      --bg1:#f7e9fb;
+      --card:#ffffff;
+      --muted:#666;
     }
+    *{box-sizing:border-box}
+    body{margin:0;font-family:Inter, system-ui, -apple-system, 'Poppins', Arial;background:linear-gradient(135deg,var(--bg1),#efe6fb);color:#222}
 
-    body {
-      margin: 0;
-      font-family: 'Poppins', sans-serif;
-      background-color: #fff6fa;
-      color: #444;
-    }
+    /* header */
+    header{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:18px 22px;background:linear-gradient(180deg,rgba(255,255,255,0.9),rgba(255,255,255,0.65));backdrop-filter: blur(6px);border-bottom:1px solid rgba(0,0,0,0.04)}
+    .brand{display:flex;align-items:center;gap:14px}
+    .brand img{width:78px;height:78px;object-fit:cover;border-radius:12px;box-shadow:0 6px 20px rgba(138,107,226,0.18)}
+    .brand h1{margin:0;font-size:1.25rem;color:var(--violet)}
+    .brand p{margin:0;font-size:0.85rem;color:var(--pink-2)}
 
-    header {
-      background-color: #ffb6c1;
-      padding: 25px 15px;
-      text-align: center;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    }
+    /* social */
+    .socials{display:flex;align-items:center;gap:12px}
+    .socials a{display:inline-flex;align-items:center;gap:8px;padding:8px 10px;border-radius:10px;text-decoration:none;color:#222;background:rgba(255,255,255,0.9);box-shadow:0 4px 12px rgba(0,0,0,0.06)}
+    .socials a .dot{width:10px;height:10px;border-radius:50%;background:var(--pink-2);display:inline-block}
 
-    header h1 {
-      margin: 0;
-      font-size: 2em;
-      color: #fff;
-    }
+    /* hero */
+    .hero{max-width:1200px;margin:18px auto;padding:0 18px}
+    .hero .lead{display:flex;align-items:center;justify-content:space-between;gap:12px}
+    .lead h2{margin:0;color:var(--violet)}
+    .lead p{margin:0;color:var(--muted)}
 
-    header p {
-      margin: 5px 0 0;
-      color: #fff;
-      font-style: italic;
-      font-size: 1em;
-    }
+    /* catalog grid */
+    .catalog{max-width:1200px;margin:20px auto;padding:18px;display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+    .card{background:var(--card);border-radius:14px;overflow:hidden;box-shadow:0 8px 30px rgba(138,107,226,0.06);cursor:pointer;display:flex;flex-direction:column}
+    .card img{width:100%;height:220px;object-fit:cover;display:block}
+    .card .body{padding:12px}
+    .card h3{margin:0 0 6px;font-size:1rem;color:#222}
+    .card p{margin:0;color:var(--muted);font-size:0.9rem}
+    .price{margin-top:8px;font-weight:700;color:var(--pink-2)}
 
-    .catalogo {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-      gap: 20px;
-      padding: 20px;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
+    /* responsive */
+    @media (max-width:1024px){.catalog{grid-template-columns:repeat(3,1fr)}}
+    @media (max-width:720px){header{padding:12px} .brand img{width:64px;height:64px} .catalog{grid-template-columns:repeat(2,1fr);gap:12px} .card img{height:160px}}
+    @media (max-width:420px){.catalog{grid-template-columns:repeat(1,1fr)} .brand h1{font-size:1rem}}
 
-    .producto {
-      background-color: #fff;
-      border-radius: 15px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-      text-align: center;
-      padding: 15px;
-      transition: transform 0.2s ease;
-    }
+    /* modal product detail */
+    .modal{position:fixed;inset:0;display:none;align-items:center;justify-content:center;padding:20px;background:linear-gradient(180deg, rgba(0,0,0,0.35), rgba(0,0,0,0.45));z-index:999}
+    .modal.active{display:flex}
+    .modal .panel{width:100%;max-width:980px;background:var(--card);border-radius:14px;display:grid;grid-template-columns:1fr 1fr;gap:14px;padding:16px;box-shadow:0 20px 50px rgba(0,0,0,0.35)}
+    .gallery{display:flex;flex-direction:column;gap:10px}
+    .main-img{width:100%;height:420px;border-radius:10px;object-fit:cover}
+    .thumbs{display:flex;gap:8px}
+    .thumbs img{width:72px;height:72px;object-fit:cover;border-radius:8px;cursor:pointer;opacity:0.9}
+    .info h2{margin:0;color:var(--violet)}
+    .info p{color:var(--muted)}
+    .info .price{font-size:1.2rem;color:var(--pink-2);margin-top:10px}
+    .actions{margin-top:14px;display:flex;gap:10px}
+    .btn{padding:10px 14px;border-radius:10px;text-decoration:none;display:inline-flex;align-items:center;gap:8px}
+    .btn.wh{background:#25D366;color:#fff}
+    .btn.chat{background:#fff;border:1px solid #eee;color:#222}
+    .close{position:absolute;top:18px;right:18px;background:rgba(255,255,255,0.9);border-radius:50%;width:42px;height:42px;display:flex;align-items:center;justify-content:center;cursor:pointer}
 
-    .producto:hover {
-      transform: scale(1.03);
-    }
-
-    .producto img {
-      width: 100%;
-      height: auto;
-      border-radius: 12px;
-    }
-
-    .producto h3 {
-      color: #ff69b4;
-      margin-top: 10px;
-      font-size: 1.1em;
-    }
-
-    .producto p {
-      margin: 5px 0;
-      font-size: 0.95em;
-    }
-
-    footer {
-      text-align: center;
-      padding: 20px;
-      background-color: #ffb6c1;
-      color: white;
-      font-size: 0.9em;
-    }
-
-    /* Botón flotante de WhatsApp */
-    .whatsapp {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      background-color: #25D366;
-      color: white;
-      border-radius: 50%;
-      width: 55px;
-      height: 55px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 28px;
-      text-decoration: none;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-      transition: 0.3s;
-      z-index: 1000;
-    }
-
-    .whatsapp:hover {
-      transform: scale(1.1);
-    }
-
-    /* Responsividad */
-    @media (max-width: 768px) {
-      header h1 {
-        font-size: 1.6em;
-      }
-      header p {
-        font-size: 0.9em;
-      }
-      .producto h3 {
-        font-size: 1em;
-      }
-      .producto p {
-        font-size: 0.85em;
-      }
-      .catalogo {
-        padding: 15px;
-        gap: 15px;
-      }
-    }
-
-    @media (max-width: 480px) {
-      header {
-        padding: 20px 10px;
-      }
-      .catalogo {
-        grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-      }
-      .whatsapp {
-        width: 50px;
-        height: 50px;
-        font-size: 24px;
-      }
-    }
+    @media (max-width:900px){.modal .panel{grid-template-columns:1fr;padding:12px}.main-img{height:300px}}
   </style>
 </head>
 <body>
-
   <header>
-    <h1>Sweet Plush 💖</h1>
-    <p>Peluches kawaii importados de Japón 🇯🇵</p>
+    <div class="brand">
+      <img src="Image/logo_2.jpg" alt="Galax Shop logo" />
+      <div>
+        <h1>Galax Shop</h1>
+        <p>Accesorios & Peluches Kawaii</p>
+      </div>
+    </div>
+    <div class="socials">
+      <a href="https://www.facebook.com/stylegalax" target="_blank" rel="noopener noreferrer">📘 Facebook</a>
+      <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">📸 Instagram</a>
+      <a href="https://wa.me/51933698436" target="_blank" rel="noopener noreferrer" class="wh">💬 WhatsApp</a>
+    </div>
   </header>
 
-  <section class="catalogo">
-    <div class="producto">
-      <img src="Image/producto_1.jpg" alt="Hello Kitty Plush">
-      <h3>Hello Kitty</h3>
-      <p>Peluchito clásico de Hello Kitty (20cm)</p>
-      <p><strong>S/ 85.00</strong></p>
-    </div>
-    <div class="producto">
-      <img src="Image/producto_2.jpg" alt="My Melody Plush">
-      <h3>My Melody</h3>
-      <p>Suave y adorable My Melody (25cm)</p>
-      <p><strong>S/ 90.00</strong></p>
-    </div>
-    <div class="producto">
-      <img src="Image/producto_3.jpg" alt="Cinnamoroll Plush">
-      <h3>Cinnamoroll</h3>
-      <p>Peluchito original Sanrio (20cm)</p>
-      <p><strong>S/ 80.00</strong></p>
-    </div>
-    <div class="producto">
-      <img src="Image/producto_4.jpg" alt="Kuromi Plush">
-      <h3>Kuromi</h3>
-      <p>Estilo rebelde y tierno (22cm)</p>
-      <p><strong>S/ 88.00</strong></p>
-    </div>
-  </section>
+  <main>
+    <section class="hero">
+      <div class="lead">
+        <div>
+          <h2>Novedades kawaii</h2>
+          <p>Peluches y accesorios importados — envío a Lima y provincias</p>
+        </div>
+        <div></div>
+      </div>
+    </section>
 
-  <footer>
-    <p>© 2025 Sweet Plush 💖 | Importados directamente de Japón | Lima - Perú</p>
-  </footer>
+    <section class="catalog" id="catalog">
+      <!-- cards will be injected by JS -->
+    </section>
 
-  <!-- Botón de WhatsApp -->
-  <a href="https://wa.me/51999999999?text=¡Hola!%20Quiero%20consultar%20por%20los%20peluches%20de%20Sweet%20Plush%20💖" 
-     target="_blank" class="whatsapp">
-    💬
-  </a>
+  </main>
 
+  <!-- modal product detail -->
+  <div class="modal" id="modal">
+    <div class="panel" role="dialog" aria-modal="true">
+      <div class="gallery">
+        <img src="" alt="Imagen principal" id="mainImg" class="main-img" />
+        <div class="thumbs" id="thumbs"></div>
+      </div>
+      <div class="info">
+        <h2 id="prodTitle">Producto</h2>
+        <p id="prodDesc">Descripción del producto</p>
+        <div class="price" id="prodPrice">S/ 0.00</div>
+        <div class="actions">
+          <a id="waAsk" class="btn wh" target="_blank" rel="noopener noreferrer">💬 Preguntar por WhatsApp</a>
+          <a id="waChat" class="btn chat" target="_blank" rel="noopener noreferrer">📝 Enviar mensaje</a>
+        </div>
+        <div style="margin-top:12px;color:var(--muted);font-size:0.9rem">Importado de Japón • Edición limitada</div>
+      </div>
+      <button class="close" id="closeBtn">✕</button>
+    </div>
+  </div>
+
+  <footer style="text-align:center;padding:18px;color:var(--muted);font-size:0.9rem">© 2025 Galax Shop • Lima, Perú • Síguenos en redes</footer>
+
+  <script>
+    // User data
+    const WHATSAPP_NUMBER = '51933698436'; // +51 933698436 (tu número)
+
+    // Simulated products (images públicas de ejemplo). Cambia estas URLs por tus fotos luego.
+    const products = [
+      {id:1,title:'Charmmy Kitty Peluche',price:'S/ 93.00',desc:'Charmmy Kitty original - 20cm. Muy suave y coleccionable.',images:[
+        'Image/producto1.jpg',
+        'Image/producto1_1.jpg',
+        'Image/producto1_2.jpg'
+      ]},
+      {id:2,title:'Gudetama Peluche',price:'S/ 67.00',desc:'Gudetama suave y dormilón, 25cm. Edición importada.',images:[
+        'Image/producto2.jpg',
+        'Image/producto2_1.jpg',
+        'Image/producto2_2.jpg',
+        'Image/producto2_3.jpg'
+      ]},
+      {id:3,title:'Cinnamoroll Peluche',price:'S/ 80.00',desc:'Cinnamoroll tierno, 22cm. Ideal para decorar tu cuarto.',images:[
+        'https://i.imgur.com/41g4GvZ.jpg',
+        'https://i.imgur.com/hRmn7rN.jpg'
+      ]},
+      {id:4,title:'Kuromi Peluche',price:'S/ 88.00',desc:'Kuromi estilo rebelde, 22cm. Perfecto regalo.',images:[
+        'https://i.imgur.com/YTpv7uQ.jpg',
+        'https://i.imgur.com/Lk8a5Sd.jpg'
+      ]},
+      {id:5,title:'My Melody Sobre',price:'S/ 57.00',desc:'Sobre tipo cartera My Melody, edición Kuji.',images:[
+        'https://i.imgur.com/1QF8Z6K.jpg',
+        'https://i.imgur.com/2Y2Qb6M.jpg'
+      ]},
+      {id:6,title:'Kirby Peluche',price:'S/ 87.00',desc:'Kirby sweet pink ball peluche.',images:[
+        'https://i.imgur.com/0Gv1l7a.jpg',
+        'https://i.imgur.com/YTpv7uQ.jpg'
+      ]}
+    ];
+
+    const catalog = document.getElementById('catalog');
+    const modal = document.getElementById('modal');
+    const mainImg = document.getElementById('mainImg');
+    const thumbs = document.getElementById('thumbs');
+    const prodTitle = document.getElementById('prodTitle');
+    const prodDesc = document.getElementById('prodDesc');
+    const prodPrice = document.getElementById('prodPrice');
+    const waAsk = document.getElementById('waAsk');
+    const waChat = document.getElementById('waChat');
+    const closeBtn = document.getElementById('closeBtn');
+
+    // render cards
+    products.forEach(p=>{
+      const card = document.createElement('article');
+      card.className='card';
+      card.innerHTML = `
+        <img src="${p.images[0]}" alt="${p.title}" />
+        <div class="body">
+          <h3>${p.title}</h3>
+          <p>${p.desc}</p>
+          <div class="price">${p.price}</div>
+        </div>`;
+      card.addEventListener('click',()=> openProduct(p));
+      catalog.appendChild(card);
+    });
+
+    function openProduct(product){
+      // populate modal
+      prodTitle.textContent = product.title;
+      prodDesc.textContent = product.desc;
+      prodPrice.textContent = product.price;
+      mainImg.src = product.images[0];
+      // thumbs
+      thumbs.innerHTML='';
+      product.images.forEach(src=>{
+        const t = document.createElement('img'); t.src=src; t.alt='thumb';
+        t.addEventListener('click',()=> mainImg.src=src);
+        thumbs.appendChild(t);
+      });
+
+      // whatsapp links encode message
+      const msg = encodeURIComponent(`Hola! Me interesa *${product.title}* - ¿está disponible?`);
+      waAsk.href = `https://wa.me/${WHATSAPP_NUMBER}?text=${msg}`;
+      waChat.href = `https://wa.me/${WHATSAPP_NUMBER}`;
+
+      modal.classList.add('active');
+    }
+
+    closeBtn.addEventListener('click',()=> modal.classList.remove('active'));
+    modal.addEventListener('click', (e)=>{ if(e.target===modal) modal.classList.remove('active') });
+
+    // keyboard escape
+    document.addEventListener('keydown', e=>{ if(e.key==='Escape') modal.classList.remove('active') });
+  </script>
 </body>
 </html>
